@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:3000/api' // Change this to your actual API URL
+const API_URL = 'https://consolelife-backend.onrender.com/api' // Change this to your actual API URL
 
 export const submitStory = async (storyData) => {
   try {
