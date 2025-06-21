@@ -4,14 +4,13 @@ import { StoryDialog } from "./uiComponent/StoryDialog";
 import { useDispatch, useSelector } from "react-redux";
 import { openDialog } from "./store/features/storySlice";
 import { setCurrentPage } from "./store/features/pageSlice";
-import { openLoginForm } from "./store/features/loginSlice";
-import { LoginForm } from "./components/login-form";
-
+import { openEnterForm } from "./store/features/enter";
+import { EnterForm } from "./components/enter";
 
 export function Home() {
   const dispatch = useDispatch();
   const { isDialogOpen } = useSelector((state) => state.story);
-  const {isLoggedin} = useSelector((state)=> state.login)
+  const { isLoggedin } = useSelector((state) => state.login);
 
   const [Hover, setHover] = useState(false);
 
@@ -26,7 +25,7 @@ export function Home() {
       </div>
       <div className="flex align-center items-center flex-col justify-center mb-8">
         <h1 className="scroll-m-20 text-center text-6xl font-extrabold tracking-tight text-balance mb-2">
-          console.log
+          console.life
         </h1>
         <h2
           onMouseEnter={() => setHover(true)}
@@ -46,7 +45,11 @@ export function Home() {
         <Button
           size="lg"
           className="px-8 py-6 rounded-xl"
-          onClick={isLoggedin ? () => dispatch(openDialog()) : () => dispatch(openLoginForm())}
+          onClick={
+            isLoggedin
+              ? () => dispatch(openDialog())
+              : () => dispatch(openEnterForm())
+          }
         >
           Share your story
         </Button>
@@ -61,11 +64,10 @@ export function Home() {
       </div>
 
       <StoryDialog />
-      
+
       <div className="w-full max-w-sm">
-        <LoginForm />
+        <EnterForm />
       </div>
-    
     </div>
   );
 }
