@@ -5,6 +5,7 @@ import { openDialog } from "../store/features/storySlice";
 import { setCurrentPage } from "@/store/features/pageSlice";
 import { Toggle } from "@/components/ui/toggle";
 import { openEnterForm } from "@/store/features/enter";
+import LiquidGlass from "liquid-glass-react";
 
 export function Header() {
   const dispatch = useDispatch();
@@ -24,18 +25,31 @@ export function Header() {
             onClick={() => {
               dispatch(setCurrentPage("home"));
             }}
-            variant={currentPage === "home" ? "default" : "outline"}
+            variant="ghost"
+            className={`flex items-center gap-2 px-6 py-3 rounded-lg border backdrop-blur-md transition
+    ${
+      currentPage === "home"
+        ? "bg-white/10 border-white/20 shadow-xl hover:bg-white/20 hover:border-white/40 hover:shadow-md"
+        : "bg-white/5 border-white/20 hover:bg-white/10"
+    }`}
           >
-            <House />
+            <House className="w-4 h-4" />
             Home
           </Button>
+
           <Button
             onClick={() => {
               dispatch(setCurrentPage("browser"));
             }}
-            variant={currentPage === "browser" ? "default" : "outline"}
+            variant="ghost"
+            className={`flex items-center gap-2 px-6 py-3 rounded-lg border backdrop-blur-md transition
+    ${
+      currentPage === "browser"
+        ? "bg-white/20 border-white/40 shadow-xl hover:bg-white/20 hover:border-white/40 hover:shadow-md"
+        : "bg-white/5 border-white/20  hover:bg-white/10"
+    }`}
           >
-            <Globe />
+            <Globe className="w-4 h-4" />
             Browse
           </Button>
         </div>
@@ -46,7 +60,13 @@ export function Header() {
           {isLoggedin ? (
             <Button>Log Out</Button>
           ) : (
-            <Button onClick={() => dispatch(openEnterForm())}>Login</Button>
+            <Button
+              className="flex items-center gap-2 px-6 py-3 rounded-lg border backdrop-blur-md transition bg-white/10 border-white/20 shadow-xl hover:bg-white/20 hover:border-white/40 hover:shadow-md"
+              variant="ghost"
+              onClick={() => dispatch(openEnterForm())}
+            >
+              Login
+            </Button>
           )}
         </div>
       </div>

@@ -8,6 +8,8 @@ import {
   CardTitle
 } from "@/components/ui/card";
 import { getStories } from './services/api';
+import bgpic from "./assets/bgpic.png";
+
 
 export const Browse = () => {
   const [stories, setStories] = useState([]);
@@ -30,9 +32,12 @@ export const Browse = () => {
   };
 
   return (
-    <div className="min-h-screen max-h-screen overflow-y-auto px-4 py-8">
+    <div
+      style={{ backgroundImage: `url(${bgpic})` }}
+      className="min-h-screen bg-cover bg-center max-h-screen overflow-y-auto px-4 py-8"
+    >
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-        {stories.map(story => (
+        {stories.map((story) => (
           <Card key={story._id} className="w-full">
             <CardHeader>
               <CardTitle>{story.title}</CardTitle>

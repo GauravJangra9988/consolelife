@@ -6,6 +6,9 @@ import { openDialog } from "./store/features/storySlice";
 import { setCurrentPage } from "./store/features/pageSlice";
 import { openEnterForm } from "./store/features/enter";
 import { EnterForm } from "./components/enter";
+import bgpic from "./assets/bgpic.png";
+import LiquidGlass from "liquid-glass-react";
+
 
 export function Home() {
   const dispatch = useDispatch();
@@ -16,35 +19,31 @@ export function Home() {
 
   return (
     <div
-      className={`min-h-screen w-full flex items-center justify-center flex-col transition-all duration-100 ${
+      style={{ backgroundImage: `url(${bgpic})` }}
+      className={`h-screen bg-cover bg-center w-full flex items-center justify-center flex-col transition-all duration-100 ${
         isDialogOpen ? "blur-sm" : ""
       }`}
     >
-      <div className="mb-4 border rounded-full px-2 py-1">
+      <div className="mb-4 -mt-28 text-green-900 rounded-full px-4 py-2 border border-white/30 bg-white/10 backdrop-blur-md shadow-xl">
         Anonymous. Authentic. Real.
       </div>
+
       <div className="flex align-center items-center flex-col justify-center mb-8">
-        <h1 className="scroll-m-20 text-center text-6xl font-extrabold tracking-tight text-balance mb-2">
+        <h1 className="scroll-m-20 text-center text-6xl font-extrabold tracking-tight text-balance mb-4">
           console.life
         </h1>
-        <h2
-          onMouseEnter={() => setHover(true)}
-          onMouseLeave={() => setHover(false)}
-          className={`tscroll-m-20 text-center text-4xl font-extrabold ${
-            Hover ? "tracking-widest" : "tracking-tight"
-          } transition-all duration-100 text-balance mb-4`}
-        >
-          Log your Dev journey
-        </h2>
-        <p className="text-xl text-muted-foreground max-w-xl text-center">
-          Real stories from real developers. No profiles. No bias. Just
-          authentic experiences from the trenches of code.
+
+        <p className="text-xl text-black text-muted-foreground max-w-xl text-center">
+          Real stories from real developers. No profiles. No bias.
+          <br />
+          Just authentic experiences from the trenches of code.
         </p>
       </div>
       <div className="flex gap-4 flex-row">
         <Button
+          className="px-6 py-6 rounded-xl text-md border border-white/20 bg-white/5 backdrop-blur-sm shadow-lg hover:bg-white/20 hover:shadow-xl transition"
+          variant="ghost"
           size="lg"
-          className="px-8 py-6 rounded-xl"
           onClick={
             isLoggedin
               ? () => dispatch(openDialog())
@@ -55,9 +54,9 @@ export function Home() {
         </Button>
         <Button
           onClick={() => dispatch(setCurrentPage("browser"))}
-          variant="outline"
+          variant="ghost"
           size="lg"
-          className="px-8 py-6 rounded-xl"
+          className="px-6 py-6 rounded-xl text-md border border-white/20 bg-white/5 backdrop-blur-sm shadow-lg hover:bg-white/20 hover:shadow-xl transition"
         >
           Read stories
         </Button>
